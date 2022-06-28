@@ -3,7 +3,7 @@ services:
 
   # Collector
   otelcol:
-    image: otel/opentelemetry-collector:0.46.0
+    image: otel/opentelemetry-collector:0.45.0
     command: [ "--config=/etc/otelcol-config.yml" ]
     volumes:
       - ./src/otelcollector/otelcol-config.yml:/etc/otelcol-config.yml
@@ -234,6 +234,7 @@ services:
     environment:
       - FRONTEND_ADDR
       - USERS
+      - PROTOCOL_BUFFERS_PYTHON_IMPLEMENTATION
       - OTEL_EXPORTER_OTLP_TRACES_ENDPOINT
       - OTEL_RESOURCE_ATTRIBUTES=service.name=loadgenerator
     depends_on:
